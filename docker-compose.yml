@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+        iris:
+                network_mode: host
+                build: ./api
+                container_name: iris_api
+                restart: always
+                environment:
+                        - APP_NAME=Iris
+                expose:
+                        - 8090
+        nginx:
+                network_mode: host
+                build: ./nginx
+                container_name: nginx
+                restart: always
+                ports:
+                        - "8443:8443"
